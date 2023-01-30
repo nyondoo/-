@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { inputWork, delwork } from '../store/modules/checkwork';
+import Footer from './Footer';
 
 export default function WorkInfo() {
   const list = useSelector((state) => state.checkwork.list);
@@ -46,18 +47,35 @@ export default function WorkInfo() {
         </div>
         <div>
           주휴수당
-          <span>미포함</span>
-          <span>포함</span>
+          <select ref={benefitRef}>
+            <option value="n">미포함</option>
+            <option value="y">포함</option>
+          </select>
         </div>
         <div>
           세금
           <select ref={taxRef}>
             <option value="no-tax">미적용</option>
-            <option value="">3.3%</option>
-            <option value="">4대보험(9.219%)</option>
+            <option value="3.3">3.3%</option>
+            <option value="9.219">4대보험(9.219%)</option>
           </select>
         </div>
       </form>
+      <Footer
+        onClick={() => {
+          dispatch(
+            inputWork({
+              id: list.length,
+              name: worknameRef.current.value,
+              payday: paydayRef.current.value,
+              worktime: worktimeRef.current.value,
+              pay: payRef.current.value,
+              benefit: benefitRef.current.value,
+              tax: taxRef.current.value,
+            })
+          );
+        }}
+      />
       {/* 입력완료 버튼을 누르면 입력한 정보를 서버로 넘겨주기 */}
     </>
   );

@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import { showBlock } from '../store/modules/switchview';
+import React, { useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { inputWork } from '../store/modules/checkwork';
+import { showBlock, showCalendar } from '../store/modules/switchview';
 
-export default function Footer({ view }) {
+export default function Footer() {
+const dispatch = useDispatch();
+const viewMode = useSelector((state) => state.switchView);
+const viewModeRef = useRef(); 
+const newWork = useSelector()
+
   return (
     <footer className="footer">
-      <div
-        onClick={() => {
-          if ({ view } === '입력 완료') {
-          }
-        }}
-      >
-        {view}
-      </div>
+        <div ref={viewModeRef} onClick={() => {
+          viewMode === '캘린더 보기' ? dispatch(showBlock()) : dispatch(showCalendar());
+        }}>{viewMode}</div>
     </footer>
   );
 }

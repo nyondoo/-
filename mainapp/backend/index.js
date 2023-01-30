@@ -1,23 +1,17 @@
-import { useSelector } from 'react-redux';
-
 const express = require('express');
 const cors = require('cors');
 const app = express();
 const PORT = 8080;
+const router = require('./routes');
+const path = require('path');
+const dotenv = require('dotenv');
 
-const list = useSelector((state) => state.checkwork.list);
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 app.use(cors());
+app.use(express.json());
 
-app.get('/', (req, res) => {
-  //   const mainBlock = [
-  //     {
-  //       name: '근무지1',
-  //       wage: 0,
-  //     },
-  //   ];
-  res.send(JSON.stringify(list));
-});
+app.use('/', router);
 
 app.listen(PORT, () => {
   console.log(`sever open : ${PORT}`);

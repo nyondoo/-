@@ -1,5 +1,5 @@
 //초기 state
-const initState = { id: 'main' };
+let viewMode = '캘린더 보기';
 
 //action type 정의하기
 const BLOCK = 'switchview/BLOCK';
@@ -29,14 +29,14 @@ export function showSubmit(payload) {
 }
 
 //Reducer 설정
-export default function switchView(state = initState, action) {
-  switch (action.type) {
+export default function switchView(state = viewMode, action) {
+  switch(action.type) {
     case BLOCK:
-      return { id: '목록 보기' };
+      return("목록 보기")
     case CALENDAR:
-      return { id: '캘린더 보기' };
+      return("캘린더 보기")
     case SUBMIT:
-      return { id: '제출버튼' };
+      return("입력 완료")
     default:
       return state;
   }

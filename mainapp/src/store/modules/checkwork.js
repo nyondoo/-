@@ -2,57 +2,59 @@
 
 //초기 state
 const initState = {
-    list: [
-        {
-            name: '근무지1',
-            payday: '2023-01-01',
-            worktime: 5,
-            pay: 12000,
-            benefit: 'n',
-            tax: 0
-        }
-    ]
-}
+  list: [],
+};
 
 //action type 정의하기
-const INPUT = "checkwork/INPUT";
-const DELETE = "checkwork/DELETE";
+const CURRENT = 'checkwork/CURRENT';
+const INPUT = 'checkwork/INPUT';
+const DELETE = 'checkwork/DELETE';
 
 //action 생성 함수
+export function currentWork(payload) {
+  return {
+    type: CURRENT,
+    payload,
+  };
+}
+
 export function inputWork(payload) {
-    return {
-        type: INPUT,
-        payload,
-    }
+  return {
+    type: INPUT,
+    payload,
+  };
 }
 
 export function delWork(id) {
-    return {
-        type: DELETE,
-        id,
-    }
+  return {
+    type: DELETE,
+    id,
+  };
 }
 
 //Reducer 설정
-export default function checkwork(state = initState, action) {
-    switch (action.type) {
-        case INPUT:
-            return {
-                ...state,
-                list: state.list.concat({
-                    id: action.payload.id,
-                    name: action.payload.name,
-                    payday: action.payload.payday,
-                    worktime: action.payload.worktime,
-                    pay: action.payload.pay,
-                    benefit: action.payload.benefit,
-                    tax: action.payload.tax,
-                }),
-                nextID: action.payload.id + 1,
-        };
-        case DELETE:
-            return console.log("근무지 삭제");
-        default:
-            return state;
-    }
+export default function checkWork(state = initState, action) {
+  switch (action.type) {
+    case CURRENT:
+      return { list: action.payload };
+    case INPUT:
+      return {
+        ...state,
+        list: state.list.concat({
+          id: action.payload.id,
+          name: action.payload.name,
+          wage: 0,
+          payday: action.payload.payday,
+          worktime: action.payload.worktime,
+          pay: action.payload.pay,
+          benefit: action.payload.benefit,
+          tax: action.payload.tax,
+        }),
+        nextID: action.payload.id + 1,
+      };
+    case DELETE:
+      return console.log('근무지 삭제');
+    default:
+      return state;
   }
+}

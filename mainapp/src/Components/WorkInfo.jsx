@@ -4,13 +4,14 @@ import { inputWork, delwork } from '../store/modules/checkwork';
 import Footer from './Footer';
 
 export default function WorkInfo() {
-  const list = useSelector((state) => state.checkwork.list);
+  const worklist = useSelector((state) => state.checkwork.list);
   const worknameRef = useRef();
   const paydayRef = useRef();
   const worktimeRef = useRef();
   const payRef = useRef();
   const benefitRef = useRef();
   const taxRef = useRef();
+  const totalRef = useRef();
   const dispatch = useDispatch();
 
   const days = [
@@ -61,22 +62,19 @@ export default function WorkInfo() {
           </select>
         </div>
       </form>
-      <Footer
-        onClick={() => {
-          dispatch(
-            inputWork({
-              id: list.length,
-              name: worknameRef.current.value,
-              payday: paydayRef.current.value,
-              worktime: worktimeRef.current.value,
-              pay: payRef.current.value,
-              benefit: benefitRef.current.value,
-              tax: taxRef.current.value,
-            })
-          );
-        }}
-      />
-      {/* 입력완료 버튼을 누르면 입력한 정보를 서버로 넘겨주기 */}
+      <div className='footer' onClick={() => {
+        dispatch(inputWork({
+          id: worklist.length,
+          name: worknameRef.current.value,
+          wage: 'none',
+          payday: paydayRef.current.value,
+          worktime: worktimeRef.current.value,
+          pay: payRef.current.value,
+          benefit: benefitRef.current.value,
+          tax: taxRef.current.value
+        }))
+      }}>
+      </div>
     </>
   );
 }

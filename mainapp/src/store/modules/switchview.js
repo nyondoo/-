@@ -1,3 +1,6 @@
+import WorkInfo from '../../Components/WorkInfo';
+import axios from 'axios';
+
 //초기 state
 let viewMode = '캘린더 보기';
 
@@ -30,13 +33,13 @@ export function showSubmit(payload) {
 
 //Reducer 설정
 export default function switchView(state = viewMode, action) {
-  switch(action.type) {
+  switch (action.type) {
     case BLOCK:
-      return("목록 보기")
+      return '목록 보기';
     case CALENDAR:
-      return("캘린더 보기")
+      return '캘린더 보기';
     case SUBMIT:
-      return("입력 완료")
+      return '입력 완료';
     default:
       return state;
   }

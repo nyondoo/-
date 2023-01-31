@@ -6,8 +6,9 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import WorkInfo from './WorkInfo';
 import { useDispatch, useSelector } from 'react-redux';
-import { showSubmit } from '../store/modules/switchview';
+import { showSubmit, showBlock, showCalendar } from '../store/modules/switchview';
 import Calander from './Calandertab';
+import {  } from '../store/modules/switchview';
 
 export default function Main() {
   const [dataArr, setDataArr] = useState([]);
@@ -17,10 +18,9 @@ export default function Main() {
   return (
     <>
       {
-      viewMode === '캘린더 보기' ? <Block /> :
-      viewMode === '목록 보기' ? <Calander /> :
-      <WorkInfo />
-    }
+      viewMode === '캘린더 보기' ? <Block /> : 
+      viewMode === '목록 보기' ? <Calander /> : <WorkInfo />
+      }
     </>
   );
 }

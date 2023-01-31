@@ -2,16 +2,18 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import AddWorkBtn from './AddWorkBtn';
 import { useDispatch, useSelector } from 'react-redux';
+import { showBlock } from '../store/modules/switchview';
 import axios from 'axios';
 import { currentWork } from '../store/modules/checkwork';
+
 
 export default function Block() {
   //목록 메인화면
   //마운트 될 때마다 근무지 정보를 가져와야 함
   //useEffect(() => {}, []) 사용
-  const [allWorks, setAllWorks] = useState([]);
   const dispatch = useDispatch();
   const currentWorks = useSelector((state) => state.checkWork.list);
+  const viewMode = useSelector((state) => state.switchView);
 
   async function getData() {
     const resAllWorks = await axios.get('http://localhost:8080/');
@@ -41,6 +43,7 @@ export default function Block() {
       )
     }
     <AddWorkBtn />
+    <footer className='footer' onClick={() => {dispatch(showBlock())}}>{viewMode}</footer>
   </>
 
   );

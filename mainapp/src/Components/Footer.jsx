@@ -6,14 +6,11 @@ import { showBlock, showCalendar } from '../store/modules/switchview';
 export default function Footer() {
 const dispatch = useDispatch();
 const viewMode = useSelector((state) => state.switchView);
-const viewModeRef = useRef(); 
-const newWork = useSelector()
 
   return (
-    <footer className="footer">
-        <div ref={viewModeRef} onClick={() => {
+    <footer className="footer" onClick={() => {
           viewMode === '캘린더 보기' ? dispatch(showBlock()) : dispatch(showCalendar());
-        }}>{viewMode}</div>
+        }}>{viewMode}
     </footer>
   );
 }

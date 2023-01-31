@@ -13,6 +13,7 @@ app.use(express.json());
 
 app.use('/', router);
 
+//서버를 PORT로 실행
 app.listen(PORT, () => {
   console.log(`sever open : ${PORT}`);
 });

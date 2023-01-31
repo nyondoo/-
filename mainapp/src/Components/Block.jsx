@@ -18,9 +18,7 @@ export default function Block() {
   async function getData() {
     const resAllWorks = await axios.get('http://localhost:8080/');
     const data = await resAllWorks.data;
-    console.log(data);
     dispatch(currentWork(data));
-    console.log(currentWorks);
   };
 
   useEffect(() => {

@@ -20,3 +20,8 @@ exports.workInfo = async (req, res) => {
   });
   res.send(true);
 };
+
+exports.workDay = (req, res) => {
+  console.log('근무한 날 : ', req.body.workedDays);
+  res.send(true);
+};

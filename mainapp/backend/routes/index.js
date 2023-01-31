@@ -6,4 +6,6 @@ router.get('/', controller.main);
 
 router.post('/workInfo', controller.workInfo);
 
+router.post('/workday', controller.workDay);
+
 module.exports = router;

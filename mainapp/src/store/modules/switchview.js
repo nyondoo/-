@@ -8,6 +8,7 @@ let viewMode = '캘린더 보기';
 const BLOCK = 'switchview/BLOCK';
 const CALENDAR = 'switchview/CALENDAR';
 const SUBMIT = 'switchview/SUBMIT';
+const ADDWORK = 'switchview/ADDWORK';
 
 //action 생성 함수
 export function showBlock(payload) {
@@ -31,6 +32,13 @@ export function showSubmit(payload) {
   };
 }
 
+export function showAddWork(payload) {
+  return {
+    type: ADDWORK,
+    payload,
+  };
+}
+
 //Reducer 설정
 export default function switchView(state = viewMode, action) {
   switch (action.type) {
@@ -40,6 +48,8 @@ export default function switchView(state = viewMode, action) {
       return '캘린더 보기';
     case SUBMIT:
       return '입력 완료';
+    case ADDWORK:
+      return '근무일 추가하기';
     default:
       return state;
   }

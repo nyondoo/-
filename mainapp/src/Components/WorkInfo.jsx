@@ -1,10 +1,7 @@
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { inputWork, delwork } from '../store/modules/checkwork';
 import { showCalendar } from '../store/modules/switchview';
-import Footer from './Footer';
-import Calandertab from './Calandertab';
 import DatePicker from 'react-multi-date-picker';
 
 export default function WorkInfo() {
@@ -15,9 +12,8 @@ export default function WorkInfo() {
   const payRef = useRef();
   const benefitRef = useRef();
   const taxRef = useRef();
-  const totalRef = useRef();
-  const dispatch = useDispatch();
   const viewMode = useSelector((state) => state.switchView);
+  const dispatch = useDispatch();
   const [values, setValues] = useState([]);
   const workedDays = [];
 
@@ -83,11 +79,11 @@ export default function WorkInfo() {
         className="footer"
         onClick={() => {
           values.map((el) => {
-            workedDays.push({
-              day: el.day,
-              month: el.month.number,
-              year: el.year,
-            });
+            const day = `0${el.day}`.slice(-2);
+            const month = `0${el.month.number}`.slice(-2);
+            workedDays.push(
+              `${day}-${month}-${el.year}`
+            );
           });
           axios({
             method: 'post',

@@ -1,26 +1,36 @@
-import React, { useRef } from 'react';
-import { useState } from 'react';
+import React from 'react';
 import Block from './Block';
 import Calandertab from './Calandertab';
-import axios from 'axios';
-import { useEffect } from 'react';
 import WorkInfo from './WorkInfo';
-import { useDispatch, useSelector } from 'react-redux';
-import { showSubmit, showBlock, showCalendar } from '../store/modules/switchview';
-import Calander from './Calandertab';
-import {  } from '../store/modules/switchview';
+import { useSelector } from 'react-redux';
+import AddWorkDay from './AddWorkDay';
+import { Route, Routes, Link } from 'react-router-dom';
 
 export default function Main() {
-  const [dataArr, setDataArr] = useState([]);
   const viewMode = useSelector((state) => state.switchView);
-  const dispatch = useDispatch();
 
   return (
     <>
       {
-      viewMode === '캘린더 보기' ? <Block /> : 
-      viewMode === '목록 보기' ? <Calander /> : <WorkInfo />
+        viewMode === '캘린더 보기' ? <Block /> : 
+        viewMode === '목록 보기' ? <Calandertab /> : 
+        viewMode === '입력 완료' ?<WorkInfo /> :
+        <AddWorkDay />
       }
+
+      {/* {
+      viewMode === '캘린더 보기' ? <Link to='/mainBlock' /> : 
+      viewMode === '목록 보기' ? <Link to='/mainCalander' /> :
+      viewMode === '입력 완료' ? <Link to='/addWork' /> : 
+      <Link to='/addWorkDay' />
+      }
+
+      <Routes>
+        <Route path='/mainBlock' element={<Block />} /> 
+        <Route path='/mainCalander' element={<Calandertab />} />
+        <Route path='/addWorkDay' element={<AddWorkDay />} /> 
+        <Route path='/addWork' element={<WorkInfo />} />
+      </Routes> */}
     </>
   );
 }

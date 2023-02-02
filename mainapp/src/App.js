@@ -6,14 +6,13 @@ import { Routes, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import WorkDatePick from './Components/WorkDatePick';
 
 function App() {
   const [mode, setMode] = useState('캘린더 보기');
 
   return (
     <div className="App">
-      {/* <Header /> */}
+      <Header />
       <Main className="contents" />
     </div>
   );

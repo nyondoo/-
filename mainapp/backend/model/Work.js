@@ -12,9 +12,9 @@ const Work = (Sequelize, DataTypes) => {
         type: DataTypes.STRING(50),
         allowNull: false,
       },
-      wage: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+      workdays: {
+        type: DataTypes.JSON,
+        allowNull: true,
       },
       payday: {
         type: DataTypes.INTEGER,
@@ -35,6 +35,10 @@ const Work = (Sequelize, DataTypes) => {
       tax: {
         type: DataTypes.STRING(5),
         allowNull: false,
+      },
+      wage: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
       },
     },
     {

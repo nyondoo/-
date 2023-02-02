@@ -23,7 +23,6 @@
     "sequelize": "^6.28.0",
     "sequelize-cli": "^6.6.0",
     "styled-components": "^5.3.6",
-    "type": "module",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

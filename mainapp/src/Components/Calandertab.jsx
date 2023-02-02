@@ -12,10 +12,15 @@ export default function Calander() {
   return (
     <>
       <Calendar />
-      <input type='hidden' />
-      <footer className='footer' onClick={() => {
-        dispatch(showCalendar())
-        }}>{viewMode}</footer>
+      <input type="hidden" />
+      <footer
+        className="footer"
+        onClick={() => {
+          dispatch(showCalendar());
+        }}
+      >
+        {viewMode}
+      </footer>
     </>
   );
 }

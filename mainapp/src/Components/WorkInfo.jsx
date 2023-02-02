@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { inputWork, delwork } from '../store/modules/checkwork';
 import { showCalendar } from '../store/modules/switchview';
 import Footer from './Footer';
+import Calandertab from './Calandertab';
+import DatePicker from 'react-multi-date-picker';
 
 export default function WorkInfo() {
   const worklist = useSelector((state) => state.checkWork.list);
@@ -16,6 +18,8 @@ export default function WorkInfo() {
   const totalRef = useRef();
   const dispatch = useDispatch();
   const viewMode = useSelector((state) => state.switchView);
+  const [values, setValues] = useState([]);
+  const workedDays = [];
 
   const days = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
@@ -27,7 +31,12 @@ export default function WorkInfo() {
       <form>
         <div>
           근무지명
-          <input type="text" name="workname" pattern='^([a-zA-Z가-힣])$' ref={worknameRef} />
+          <input
+            type="text"
+            name="workname"
+            pattern="^([a-zA-Z가-힣])$"
+            ref={worknameRef}
+          />
         </div>
         <div>
           월급일 매월
@@ -65,26 +74,40 @@ export default function WorkInfo() {
             <option value="3">4대보험(9.219%)</option>
           </select>
         </div>
+        <div>
+          근무한 날
+          <DatePicker multiple value={values} onChange={setValues} />
+        </div>
       </form>
-      <footer className='footer' onClick={() => {
-        axios({
-          method: 'post',
-          url: 'http://localhost:8080/workInfo',
-          data: {
-            id: worklist.length,
-            name: worknameRef.current.value,
-            wage: 0,
-            payday: paydayRef.current.value,
-            worktime: worktimeRef.current.value,
-            pay: payRef.current.value,
-            benefit: benefitRef.current.value,
-            tax: taxRef.current.value
-          }
-        }).then((res) => 
-        {alert('근무지 등록이 완료되었습니다.')
-        dispatch(showCalendar())}
-        )
-        }}>
+      <footer
+        className="footer"
+        onClick={() => {
+          values.map((el) => {
+            workedDays.push({
+              day: el.day,
+              month: el.month.number,
+              year: el.year,
+            });
+          });
+          axios({
+            method: 'post',
+            url: 'http://localhost:8080/workInfo',
+            data: {
+              id: worklist.length,
+              name: worknameRef.current.value,
+              workdays: workedDays,
+              payday: paydayRef.current.value,
+              worktime: worktimeRef.current.value,
+              pay: payRef.current.value,
+              benefit: benefitRef.current.value,
+              tax: taxRef.current.value,
+            },
+          }).then((res) => {
+            alert('근무지 등록이 완료되었습니다.');
+            dispatch(showCalendar());
+          });
+        }}
+      >
         {viewMode}
       </footer>
     </>

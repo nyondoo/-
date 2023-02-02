@@ -69,17 +69,45 @@ div {
   margin: 0 auto;
 }
 
+button {
+  border: none;
+  background-color: transparent;
+  font-size: 1em;
+  color: white;
+}
+
 .workBlock {
-  background-color: #00ff7f;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  background-color: #08298a;
   width: 250px;
   height: 100px;
   border-radius: 10px;
+  padding: 10px 15px 10px 15px;
   box-shadow: 3px 3px lightgray;
+  color: white;
+}
+
+.workName {
+  width: 200px;
+  text-align: left;
+}
+
+.wage {
+  font-size: x-large;
+}
+
+.blockbtn {
+  width: 130px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .AddWorkBtn {
-  background-color: gray;
+  background-color: lightgray;
   width: 250px;
-  height: 50px;
+  height: 30px;
+  padding: 10px 15px 20px 15px;
   border-radius: 10px;
 }

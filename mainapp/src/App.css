@@ -1,16 +1,32 @@
+@font-face {
+  font-family: 'IBM Plex Sans KR';
+  src: url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;600&display=swap')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  font-family: 'IBM Plex Sans KR';
+}
 .App {
   text-align: center;
   padding-top: 80px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 400px;
 }
-
 
 .header {
   position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 80px;
-  background-color: cornsilk;
+  height: 120px;
+  background-color: transparent;
+  font-size: 3em;
+  font-weight: 500;
+  box-shadow: 2px 2px 5px lightgray;
 }
 
 .logo {
@@ -27,21 +43,32 @@
 
 .contents {
   display: flex;
-  width: 96%;
-  max-width: 1100px;
   height: 100%;
   margin: 50px 10px 20px 10px;
   padding-top: 100px;
-  align-items: center;
-  justify-content: space-between;
+  flex-flow: column;
+  justify-content: space-between center;
 }
 
 .footer {
   position: fixed;
-  left: 0;
-  bottom: 0;
+  bottom: -20px;
   width: 100%;
   height: 80px;
+  left: 0;
+  background-color: black;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+#footer2 {
+  position: fixed;
+  bottom: 0px;
+  height: 50px;
+  padding-bottom: 10px;
 }
 
 div {
@@ -61,26 +88,32 @@ div {
   justify-content: space-between;
   background-color: #08298a;
   width: 250px;
-  height: 100px;
+  height: 125px;
   border-radius: 10px;
   padding: 10px 10px 10px 10px;
-  box-shadow: 3px 3px lightgray;
+  box-shadow: 3px 3px 5px gray;
   color: white;
 }
 
 .workName {
   width: 200px;
   text-align: left;
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 1.1em;
+  display: block;
 }
 
 .wage {
-  font-size: x-large;
+  font-size: 1.8em;
 }
 
 .blockbtn {
   width: 170px;
   display: flex;
   justify-content: space-between;
+  margin-right: 25px;
+  font-size: 1.2em;
 }
 
 .AddWorkBtn {
@@ -89,4 +122,69 @@ div {
   height: 30px;
   padding: 10px 15px 20px 15px;
   border-radius: 10px;
+}
+
+input {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+}
+
+.workInfoForm {
+  height: 700px;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column wrap;
+}
+
+.inputTags {
+  width: 100%;
+  text-align: left;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.tagName {
+  margin-right: 10px;
+}
+
+select {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+}
+
+#trashIcon {
+  width: 30px;
+  height: 30px;
+  margin-right: 0px;
+}
+
+.blockTop {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media only screen and (min-width: 760px) {
+  .footer {
+    border-radius: 20px;
+    bottom: 30px;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    padding-bottom: 0px;
+  }
+
+  #footer {
+    bottom: 20px;
+  }
+
+  .footer:hover {
+    background-color: white;
+    color: black;
+    box-shadow: 3px 3px 5px lightgray;
+  }
 }

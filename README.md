@@ -26,9 +26,11 @@ React 컴포넌트와 Hooks, Redux 사용 및 이해. 백엔드 서버를 연결
 
   메인 화면을 렌더할 때마다 DB에서 근무지 정보를 불러옴.
 
+
 - 근무지가 없는 상태
 
   <img src="https://user-images.githubusercontent.com/116782318/217128561-c5c8476e-f280-40c3-9b22-decab9d6a1c7.png" alt='메인화면' height="500px">
+
 
 - 근무지 작성 (CREATE)
 
@@ -37,6 +39,7 @@ React 컴포넌트와 Hooks, Redux 사용 및 이해. 백엔드 서버를 연결
   <img src="https://user-images.githubusercontent.com/116782318/217128565-735b3aeb-a35b-4488-a9c0-dedaa57f14eb.png" alt='근무지 정보 입력' height="500px">
 
   <img src="https://user-images.githubusercontent.com/116782318/217128566-fc949a91-9b20-410e-be2f-055da22b6e9d.png" alt='근무지 추가' height="500px">
+
 
 - 근무 일정 추가 (UPDATE)
 
@@ -49,8 +52,8 @@ React 컴포넌트와 Hooks, Redux 사용 및 이해. 백엔드 서버를 연결
 (2) 직접 추가 버튼 클릭 시 선택한 날짜의 일급 추가, 근무지 블록 컴포넌트의 월급 값이 변경되면서 리렌더링 ("react-multi-date-picker" 라이브러리, React Redux, useState, Sequelize 사용)
 
 <img src="https://user-images.githubusercontent.com/116782318/217128578-b8899a69-a008-4f6b-968f-b54f20d0547e.png" height="500px">
-
 <img src="https://user-images.githubusercontent.com/116782318/217128579-b9aa4dac-9354-4387-9b04-bf49d3221ad9.png" height="500px">
+
 
 - 근무지 삭제 (DELETE)
 
@@ -61,3 +64,12 @@ React 컴포넌트와 Hooks, Redux 사용 및 이해. 백엔드 서버를 연결
   <img src="https://user-images.githubusercontent.com/116782318/217128586-13bc81eb-27d5-41cb-b5fb-0a92a5d58857.png" height="500px">
 
 ## 개선사항
+(1) 로그인 기능 추가
+- 현재는 제작자 혼자서만 사용 가능한 상황..
+- 로그인 기능을 추가하여 회원별로 근무지 정보를 관리할 수 있도록 해야 실제 서비스가 가능
+
+(2) 근무지 정보 수정 기능 추가
+- 현재는 월급을 추가하는 기능 뿐
+- 시급, 근무지 명 등의 정보를 수정할 수 있어야 함
+
+

@@ -15,7 +15,7 @@ export default function Block() {
   const datePickerRef = useRef();
 
   async function getData() {
-    const resAllWorks = await axios.get(`${process.env.REACT_APP_MYSQL_HOST}/`);
+    const resAllWorks = await axios.get(`http://localhost:8000/`);
     const data = await resAllWorks.data;
     console.log('근무지 조회 : ', data);
     dispatch(currentWork(data));
@@ -44,7 +44,7 @@ export default function Block() {
                 onClick={() => {
                   if (window.confirm('정말 삭제하시겠습니까?')) {
                     axios({
-                      url: `${process.env.REACT_APP_MYSQL_HOST}/deleteWork`,
+                      url: `http://localhost:8000/deleteWork`,
                       method: 'delete',
                       data: {
                         id: el.id,
@@ -65,7 +65,7 @@ export default function Block() {
                 className="btns"
                 onClick={() => {
                   axios({
-                    url: `${process.env.REACT_APP_MYSQL_HOST}/attend`,
+                    url: `http://localhost:8000/attend`,
                     method: 'post',
                     data: {
                       name: el.name,
@@ -107,7 +107,7 @@ export default function Block() {
                       workedDays.push(`${day}-${month}-${el.year}`);
                     });
                     axios({
-                      url: `${process.env.REACT_APP_MYSQL_HOST}/addWorkDays`,
+                      url: `http://localhost:8000/addWorkDays`,
                       method: 'post',
                       data: {
                         name: el.name,

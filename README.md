@@ -52,6 +52,7 @@ React 컴포넌트와 Hooks, Redux 사용 및 이해. 백엔드 서버를 연결
 (2) 직접 추가 버튼 클릭 시 선택한 날짜의 일급 추가, 근무지 블록 컴포넌트의 월급 값이 변경되면서 리렌더링 ("react-multi-date-picker" 라이브러리, React Redux, useState, Sequelize 사용)
 
 <img src="https://user-images.githubusercontent.com/116782318/217128578-b8899a69-a008-4f6b-968f-b54f20d0547e.png" height="500px">
+
 <img src="https://user-images.githubusercontent.com/116782318/217128579-b9aa4dac-9354-4387-9b04-bf49d3221ad9.png" height="500px">
 
 
@@ -72,4 +73,5 @@ React 컴포넌트와 Hooks, Redux 사용 및 이해. 백엔드 서버를 연결
 - 현재는 월급을 추가하는 기능 뿐
 - 시급, 근무지 명 등의 정보를 수정할 수 있어야 함
 
+(3) 근무지 삭제 시 비동기 처리로 인한 렌더링 오류
 

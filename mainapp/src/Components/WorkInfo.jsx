@@ -100,7 +100,7 @@ export default function WorkInfo() {
             });
             axios({
               method: 'post',
-              url: `http://localhost:8000/workInfo`,
+              url: `${process.env.REACT_APP_HOST}/workInfo`,
               data: {
                 id: worklist.length,
                 name: worknameRef.current.value,

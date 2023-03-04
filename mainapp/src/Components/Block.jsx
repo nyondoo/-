@@ -33,7 +33,7 @@ export default function Block() {
 
   return (
     <>
-      {currentWorks.map((el) => (
+      {currentWorks.length > 0 && currentWorks.map((el) => (
         <Fragment key={el.id}>
           <div className="workBlock">
             <div className="blockTop">

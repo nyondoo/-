@@ -18,7 +18,11 @@ dotenv.config({ path: '../.env' });
 app.use(cors());
 app.use(express.json());
 app.use('/', router);
-app.use(session());
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+  })
+);
 
 //서버를 PORT로 실행
 app.listen(PORT, () => {

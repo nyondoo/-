@@ -40,7 +40,7 @@
 
 - **메인 화면** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/78cc57d6e6c6a3fb2ee896293f7f674c8d25c6fe/mainapp/client/src/Components/Block.jsx#L17)
   - React 화면단에서, 메인 화면을 렌더할 때마다 DB에서 근무지 정보를 불러와 보여줍니다.
-  - 화면 전환은 삼항연산자로 조건부 렌더링하여 보여줍니다. :pushpin: [코드 확인] (https://github.com/nyondoo/Check-Work/blob/78cc57d6e6c6a3fb2ee896293f7f674c8d25c6fe/mainapp/client/src/Components/Main.jsx#L14)
+  - 화면 전환은 삼항연산자로 조건부 렌더링하여 보여줍니다. :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/ca897b3303473ab5b25ceac8685c73326b926968/mainapp/client/src/Components/Main.jsx#L15)
   
  </br>
 

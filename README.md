@@ -56,7 +56,7 @@
   - DB에 근무지 정보를 저장한 후 true값을 응답합니다.
   
 - **결과 응답** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/Components/WorkInfo.jsx#L114)
-  - 요청에 대한 응답을 받으면 리듀서를 호출하여 메인 페이지를 렌더합니다. :pushpin: [코드 확인] (https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/store/modules/switchview.js#L43)
+  - 요청에 대한 응답을 받으면 리듀서를 호출하여 메인 페이지를 렌더합니다. :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/store/modules/switchview.js#L43)
 
 </br>
   

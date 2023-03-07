@@ -38,9 +38,10 @@
 ### 4.1. 메인 화면(READ)
 <img width="267" alt="image" src="https://user-images.githubusercontent.com/116782318/223375692-f1df7ce0-500d-477d-8547-bac949dceb57.png">
 
-- **메인 화면** :pushpin: [코드 확인](https://github.com/nyondoo/mileeasy/blob/2961f19f5153e97090b62d15a886ee0ad1d3bbfc/views/mbtitest.ejs#L33)
+- **메인 화면** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/78cc57d6e6c6a3fb2ee896293f7f674c8d25c6fe/mainapp/client/src/Components/Block.jsx#L17)
   - React 화면단에서, 메인 화면을 렌더할 때마다 DB에서 근무지 정보를 불러와 보여줍니다.
-
+  - 화면 전환은 삼항연산자로 조건부 렌더링하여 보여줍니다. :pushpin: [코드 확인] (https://github.com/nyondoo/Check-Work/blob/78cc57d6e6c6a3fb2ee896293f7f674c8d25c6fe/mainapp/client/src/Components/Main.jsx#L14)
+  
  </br>
 
 ### 4.2.1 근무지 등록(CREATE)

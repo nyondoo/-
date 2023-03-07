@@ -26,6 +26,7 @@
 ## 3. ERD 설계
 <img width="110" alt="image" src="https://user-images.githubusercontent.com/116782318/223374838-e04d861b-87e1-45eb-9c41-c14ff0c6b496.png">
 
+</br>
 
 ## 4. 핵심 기능
 이 서비스는 클릭 한 번으로 출근 기록이 가능하고, 한 눈에 월급을 파악할 수 있습니다.
@@ -40,6 +41,7 @@
 - **메인 화면** :pushpin: [코드 확인](https://github.com/nyondoo/mileeasy/blob/2961f19f5153e97090b62d15a886ee0ad1d3bbfc/views/mbtitest.ejs#L33)
   - React 화면단에서, 메인 화면을 렌더할 때마다 DB에서 근무지 정보를 불러와 보여줍니다.
 
+ </br>
 
 ### 4.2.1 근무지 등록(CREATE)
 
@@ -55,6 +57,8 @@
 - **결과 응답** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/Components/WorkInfo.jsx#L114)
   - 요청에 대한 응답을 받으면 리듀서를 호출하여 메인 페이지를 렌더합니다. :pushpin: [코드 확인] (https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/store/modules/switchview.js#L43)
 
+</br>
+  
 ### 4.2.2 출근/직접 입력 버튼(UPDATE)
 
 <img src="https://user-images.githubusercontent.com/116782318/217128578-b8899a69-a008-4f6b-968f-b54f20d0547e.png" height="500px">
@@ -70,6 +74,7 @@
 - **결과 응답** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/Components/Block.jsx#L17)
   - true값을 받으면 근무지 정보를 조회하는 axios비동기 요청을 보냅니다. Block컴포넌트의 월급 값이 바뀌어 화면이 리렌더링 됩니다.
 
+</br>
 
 ### 4.2.3 근무지 삭제 (DELETE)
 
@@ -81,6 +86,8 @@
  
 - **요청 처리** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/server/controller/main.js#L58)
   - 해당 근무지를 DB에서 삭제합니다.
+
+</br>
 
 ## 개선사항
 (1) 로그인 기능 추가

@@ -57,7 +57,8 @@
 
 ### 4.2.2 출근/직접 입력 버튼(UPDATE)
 
-
+<img src="https://user-images.githubusercontent.com/116782318/217128578-b8899a69-a008-4f6b-968f-b54f20d0547e.png" height="500px">
+<img src="https://user-images.githubusercontent.com/116782318/217128579-b9aa4dac-9354-4387-9b04-bf49d3221ad9.png" height="500px">
 
 - **Axios 비동기 요청** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/Components/Block.jsx#L67)
   - 출근 버튼 클릭 시 클릭한 근무지 이름과 근무 일자(현재 일자)를 담은 POST요청을 날립니다.
@@ -70,20 +71,16 @@
   - true값을 받으면 근무지 정보를 조회하는 axios비동기 요청을 보냅니다. Block컴포넌트의 월급 값이 바뀌어 화면이 리렌더링 됩니다.
 
 
-<img src="https://user-images.githubusercontent.com/116782318/217128578-b8899a69-a008-4f6b-968f-b54f20d0547e.png" height="500px">
-<img src="https://user-images.githubusercontent.com/116782318/217128579-b9aa4dac-9354-4387-9b04-bf49d3221ad9.png" height="500px">
-
-
 ### 4.2.3 근무지 삭제 (DELETE)
 
+<img src="https://user-images.githubusercontent.com/116782318/217128584-1b6d7448-0ca3-4781-abe7-f72b61f034ed.png" height="500px">
+<img src="https://user-images.githubusercontent.com/116782318/217128586-13bc81eb-27d5-41cb-b5fb-0a92a5d58857.png" height="500px">
+  
 - **Axios 비동기 요청** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/client/src/Components/Block.jsx#L44)
   - 해단 근무지의 id를 담은 POST요처을 날립니다.
  
 - **요청 처리** :pushpin: [코드 확인](https://github.com/nyondoo/Check-Work/blob/7e82d7d7b876c66643d6ef05f26780e02bb3b418/mainapp/server/controller/main.js#L58)
   - 해당 근무지를 DB에서 삭제합니다.
-
-  <img src="https://user-images.githubusercontent.com/116782318/217128584-1b6d7448-0ca3-4781-abe7-f72b61f034ed.png" height="500px">
-<img src="https://user-images.githubusercontent.com/116782318/217128586-13bc81eb-27d5-41cb-b5fb-0a92a5d58857.png" height="500px">
 
 ## 개선사항
 (1) 로그인 기능 추가

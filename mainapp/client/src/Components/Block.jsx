@@ -49,8 +49,10 @@ export default function Block() {
                       data: {
                         id: el.id,
                       },
-                    }).then(() => {
-                      getData();
+                    }).then((res) => {
+                      if( res.data.msg === true ) {
+                        alert("근무지 삭제를 완료했습니다.");
+                      } else {alert("근무지 삭제 오류");}
                     });
                   } else {
                     return false;

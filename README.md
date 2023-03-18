@@ -16,6 +16,7 @@
 #### `Back-end`
 - Node.js
 - Express
+- Sequelize
 - MySQL
 #### `Front-end`
 - React

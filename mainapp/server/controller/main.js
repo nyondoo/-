@@ -57,13 +57,14 @@ exports.attend = async (req, res) => {
 
 exports.deleteWork = async (req, res) => {
   try {
-    let delResult = await Work.destroy({
+    await Work.destroy({
       where: {
         id: req.body.id,
       },
+    }).then((result) => {
+      res.send(true);
     });
-    res.send({ msg: true });
   } catch {
-    res.send({ msg: false });
+    res.send(false);
   }
 };

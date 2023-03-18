@@ -31,6 +31,24 @@ export default function Block() {
   let day = ('0' + todayRaw.getDate()).slice(-2);
   const today = `${day}-${month}-${year}`;
 
+  const deleteWork = (id) => {
+    if (window.confirm('정말 삭제하시겠습니까?')) {
+      axios({
+        url: `${process.env.REACT_APP_HOST}/deleteWork`,
+        method: 'delete',
+        data: {id},
+      }).then((res) => {
+        console.log(res.data);
+        if( res.data != false ) {
+          alert("근무지 삭제를 완료했습니다.");
+          getData();
+        } else {alert("근무지 삭제 오류");}
+      });
+    } else {
+      return false;
+    }
+  }
+
   return (
     <>
       {currentWorks.length > 0 && currentWorks.map((el) => (
@@ -41,25 +59,8 @@ export default function Block() {
               <img
                 id="trashIcon"
                 src="/img/trash.png"
-                onClick={() => {
-                  if (window.confirm('정말 삭제하시겠습니까?')) {
-                    axios({
-                      url: `${process.env.REACT_APP_HOST}/deleteWork`,
-                      method: 'delete',
-                      data: {
-                        id: el.id,
-                      },
-                    }).then((res) => {
-                      console.log(res.data.msg);
-                      if( res.data.msg != false ) {
-                        alert("근무지 삭제를 완료했습니다.");
-                        getData();
-                      } else {alert("근무지 삭제 오류");}
-                    });
-                  } else {
-                    return false;
-                  }
-                }}
+                alt="img"
+                onClick={() => { deleteWork(el.id) }}
               />
             </div>
             <div className="wage">₩{el.wage.toLocaleString()}</div>

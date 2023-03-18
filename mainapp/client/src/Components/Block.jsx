@@ -50,14 +50,15 @@ export default function Block() {
                         id: el.id,
                       },
                     }).then((res) => {
-                      if( res.data.msg === true ) {
+                      console.log(res.data.msg);
+                      if( res.data.msg != false ) {
                         alert("근무지 삭제를 완료했습니다.");
+                        getData();
                       } else {alert("근무지 삭제 오류");}
                     });
                   } else {
                     return false;
                   }
-                  getData();
                 }}
               />
             </div>

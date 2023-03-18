@@ -62,8 +62,8 @@ exports.deleteWork = async (req, res) => {
         id: req.body.id,
       },
     });
-    res.send(true);
+    res.send({ msg: true });
   } catch {
-    res.send(false);
+    res.send({ msg: false });
   }
 };

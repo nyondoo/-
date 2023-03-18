@@ -53,11 +53,15 @@ export default function WorkInfo() {
 
         <div className="inputTags">
           <span className="tagName">시급 금액</span>
-          <input type="number" ref={payRef} />
-          <span id="checkbox" value="9620">
+          <input id="hourly-wage" type="number" ref={payRef}/>
+          <span>
             &nbsp;최저시급
           </span>
-          <input type="checkbox" name="minwage" />
+          <input id="check-minwage" type="checkbox" name="minwage" onClick={(e) => {
+            if(e.target.checked){
+              document.getElementById("hourly-wage").value = 9620
+            } else document.getElementById("hourly-wage").value = ""
+          }}/>
         </div>
 
         <div className="inputTags">

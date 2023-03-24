@@ -29,11 +29,11 @@
 
 </br>
 
-## 4. 핵심 기능
+## 4. 주요 구현 기능
 이 서비스는 클릭 한 번으로 출근 기록이 가능하고, 한 눈에 월급을 파악할 수 있습니다.
 
-<details>
-<summary><b>핵심 기능 설명 펼치기</b></summary>
+</br>
+
 <div markdown="1">
 
 ### 4.1. 메인 화면(READ)
@@ -91,14 +91,61 @@
 
 </br>
 
-## 개선사항
-(1) 로그인 기능 추가
-- 현재는 제작자 혼자서만 사용 가능한 상황..
-- 로그인 기능을 추가하여 회원별로 근무지 정보를 관리할 수 있도록 해야 실제 서비스가 가능
+## 5. 핵심 트러블 슈팅
+### 5.1. 근무지 삭제 시 화면단에서 바로 반영되지 않음
+- 근무지 삭제 버튼(휴지통 아이콘) 클릭 시 DB에 반영이 되나, 화면단에서 반영이 되지 않는 문제가 있었습니다.
+- 브라우저 콘손을 확인해보니 서버 단에서 제대로 응답이 오지 않고 있었습니다.
+- 서버 근무지 삭제 API의 응답 코드를 확인해보았습니다.
+**기존 코드** 
+<div markdown="1">
 
-(2) 근무지 정보 수정 기능 추가
-- 현재는 월급을 추가하는 기능 뿐
-- 시급, 근무지 명 등의 정보를 수정할 수 있어야 함
+~~~javascript
+import axios from 'axios';
+import axiosurl from '../url';
 
-(3) 근무지 삭제 시 비동기 처리로 인한 렌더링 오류
+const axiosJWT = axios.create();
+const accessToken = localStorage.getItem('accessToken');
+axiosJWT.defaults.headers.common['authorization'] = `Bearer ${accessToken}`;
 
+axiosJWT.interceptors.request.use(
+  async (config) => {
+    await axios
+      .get(axiosurl.interceptor1, {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+      })
+      .then(() => {
+        return config;
+      })
+      .catch(async (err2) => {
+        if (
+          err2.response.data.message === 'TokenExpiredError' ||
+          err2.response.data.message === 'TokenNull' ||
+          err2.response.data.message === 'JsonWebTokenError'
+        ) {
+          const rep = await axios.get(axiosurl.interceptor2);
+          const newAccessToken = rep.data.accessToken;
+          localStorage.setItem('accessToken', newAccessToken);
+          axiosJWT.defaults.headers.common[
+            'authorization'
+          ] = `Bearer ${newAccessToken}`;
+          console.log(newAccessToken);
+          config.headers.authorization = `Bearer ${newAccessToken}`;
+          return config;
+        } else {
+          alert('error!');
+          return Promise.reject(false);
+        }
+      });
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+export default axiosJWT;
+~~~
+
+</div>

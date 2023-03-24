@@ -96,56 +96,35 @@
 - 근무지 삭제 버튼(휴지통 아이콘) 클릭 시 DB에 반영이 되나, 화면단에서 반영이 되지 않는 문제가 있었습니다.
 - 브라우저 콘손을 확인해보니 서버 단에서 제대로 응답이 오지 않고 있었습니다.
 - 서버 근무지 삭제 API의 응답 코드를 확인해보았습니다.
-**기존 코드** 
+- **기존 코드** 
 <div markdown="1">
 
 ~~~javascript
-import axios from 'axios';
-import axiosurl from '../url';
-
-const axiosJWT = axios.create();
-const accessToken = localStorage.getItem('accessToken');
-axiosJWT.defaults.headers.common['authorization'] = `Bearer ${accessToken}`;
-
-axiosJWT.interceptors.request.use(
-  async (config) => {
-    await axios
-      .get(axiosurl.interceptor1, {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      })
-      .then(() => {
-        return config;
-      })
-      .catch(async (err2) => {
-        if (
-          err2.response.data.message === 'TokenExpiredError' ||
-          err2.response.data.message === 'TokenNull' ||
-          err2.response.data.message === 'JsonWebTokenError'
-        ) {
-          const rep = await axios.get(axiosurl.interceptor2);
-          const newAccessToken = rep.data.accessToken;
-          localStorage.setItem('accessToken', newAccessToken);
-          axiosJWT.defaults.headers.common[
-            'authorization'
-          ] = `Bearer ${newAccessToken}`;
-          console.log(newAccessToken);
-          config.headers.authorization = `Bearer ${newAccessToken}`;
-          return config;
-        } else {
-          alert('error!');
-          return Promise.reject(false);
-        }
-      });
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
-
-export default axiosJWT;
+exports.deleteWork = async (req, res) => {
+    let delResult = await Work.destroy({
+      where: {
+        id: req.body.id,
+      },
+    })
+    res.send({ msg: true });
+};
 ~~~
 
+- 비동기 요청이기 때문에 처리 결과와 상관 없이 true가 응답으로 보내지고 있음
+- **개선된 코드**
+~~~javascript
+exports.deleteWork = async (req, res) => {
+  try {
+    await Work.destroy({
+      where: {
+        id: req.body.id,
+      },
+    }).then((result) => {
+      res.send(true);
+    });
+  } catch {
+    res.send(false);
+  }
+};
+~~~
 </div>

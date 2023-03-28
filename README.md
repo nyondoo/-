@@ -26,8 +26,15 @@
 
 </br>
 
-## 3. ERD
+## 3. ERD & API 명세
 <img width="110" alt="image" src="https://user-images.githubusercontent.com/116782318/223374838-e04d861b-87e1-45eb-9c41-c14ff0c6b496.png">
+
+</br>
+
+👉 [API 명세 전체보기](https://drive.google.com/file/d/1R8sJkDq3u-_b3AbIFfOcrFSoq8vKlj2N/view?usp=sharing) 👈
+
+<img width="700" alt="스크린샷 2023-03-25 오전 1 25 17" src="https://user-images.githubusercontent.com/116782318/227584565-2e071d2c-411f-4524-866c-137eb7d0bbb7.png">
+
 
 </br>
 
